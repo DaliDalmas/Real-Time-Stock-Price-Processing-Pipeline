@@ -1,0 +1,15 @@
+retrieve cluster id using the command bellow
+docker exec -ti kafka /opt/kafka/bin/kafka-cluster.sh cluster-id --bootstrap-server :9092
+
+you can decide to log into the container and create the topic from there
+docker exec -it kafka sh
+cd /opt/kafka/bin/kafka-topics.sh --bootstrap-server:9092 --topic demo --create --partitions 3 --replication-factor 1
+
+creating a simple topic and producing to it
+docker exec -ti kafka /opt/kafka/bin/kafka-console-producer.sh --bootstrap-server :9092 --topic demo
+
+producing
+docker exec -ti kafka /opt/kafka/bin/kafka-console-producer.sh --bootstrap-server :9092 --topic demo
+
+consuming
+docker exec -ti kafka /opt/kafka/bin/kafka-console-consumer.sh --bootstrap-server :9092 --topic demo --from-beginning
